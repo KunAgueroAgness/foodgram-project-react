@@ -1,16 +1,16 @@
 from django.contrib import admin
 
-from .models import (Favorites, Ingredient, IngredientInRecipe, Recipe,
-                     ShoppingCart, Tag, TagInRecipe)
+from .models import (Favorites, Ingredient, Recipe, RecipeIngredient,
+                     RecipeTag, ShoppingCart, Tag)
 
 
-class IngredientInRecipeInline(admin.TabularInline):
-    model = IngredientInRecipe
+class RecipeIngredientInline(admin.TabularInline):
+    model = RecipeIngredient
     extra = 1
 
 
-class TagInRecipeInline(admin.TabularInline):
-    model = TagInRecipe
+class RecipeTagInline(admin.TabularInline):
+    model = RecipeTag
     extra = 1
 
 
@@ -44,7 +44,7 @@ class RecipeAdmin(admin.ModelAdmin):
     search_fields = ('author__username', 'name',)
     list_filter = ('name', 'author', 'tags',)
     readonly_fields = ('count_favorite',)
-    inlines = (IngredientInRecipeInline, TagInRecipeInline)
+    inlines = (RecipeIngredientInline, RecipeTagInline)
     exclude = ('tags', 'ingredients')
     empty_value_display = '-пусто-'
 

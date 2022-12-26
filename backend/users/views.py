@@ -1,11 +1,13 @@
-from api.pagination import CustomPagination
+from django.db.models import Count, Exists, OuterRef
 from django.shortcuts import get_object_or_404
 from djoser.views import UserViewSet
-from recipes.serializers import FollowSerializer, SubscriptionSerializer
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+
+from api.pagination import CustomPagination
+from recipes.serializers import FollowSerializer, SubscriptionSerializer
 
 from .models import Subscription, User
 
@@ -32,8 +34,16 @@ class CustomUserViewSet(UserViewSet):
         permission_classes=(IsAuthenticated,)
     )
     def get_subscriptions(self, request):
+        is_subscribed = Subscription.objects.filter(
+            user=self.request.user,
+            author=OuterRef('id')
+        )
         queryset = self.paginate_queryset(
-            User.objects.filter(following__user=request.user)
+            User.objects.filter(
+                following__user=request.user).annotate(
+                    is_subscribed=Exists(is_subscribed)).annotate(
+                        recipes_count=Count('recipes')
+            )
         )
         serializer = SubscriptionSerializer(
             queryset,
