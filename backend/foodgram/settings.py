@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY', 'такого ключа в енве нету')
 
 
-DEBUG = os.environ.get('DEBUG', default=True)
+DEBUG = os.environ.get('DEBUG', default=False)
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default='*').split(' ')
 
