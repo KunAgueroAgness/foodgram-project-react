@@ -21,7 +21,7 @@ jobs:
     - name: Test with flake8
       run: python -m flake8 backend
 
-build_and_push_to_docker_hub:
+  build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     needs: tests
@@ -42,7 +42,7 @@ build_and_push_to_docker_hub:
           file: ./backend/Dockerfile
           push: true
           no-cache: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/backend_foodgram:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/foodgram_backend:latest
       - name: Push frontend to Docker Hub
         uses: docker/build-push-action@v2
         with:
@@ -50,7 +50,7 @@ build_and_push_to_docker_hub:
           context: ./frontend
           file: ./frontend/Dockerfile
           no-cache: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/frontend_foodgram:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/foodgram_frontend:latest
   deploy:
       if: github.ref == 'refs/heads/master'
       runs-on: ubuntu-latest
