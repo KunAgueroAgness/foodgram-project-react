@@ -50,7 +50,7 @@ build_and_push_to_docker_hub:
           context: ./frontend
           file: ./frontend/Dockerfile
           no-cache: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/frontend_foodgram:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/foodgram_frontend:latest
   deploy:
       if: github.ref == 'refs/heads/master'
       runs-on: ubuntu-latest
