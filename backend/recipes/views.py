@@ -53,6 +53,7 @@ class RecipesViewSet(viewsets.ModelViewSet):
                 is_favorited=Exists(is_favorited)).annotate(
                     is_in_shop_cart=Exists(is_in_shopping_cart)
             )
+            return queryset
         return queryset
 
     def get_serializer_class(self):
