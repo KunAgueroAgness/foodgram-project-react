@@ -11,7 +11,7 @@
 
 ```
 - docker==6.0.0
-- django==3.2.16
+- django==2.2.19
 - django-colorfield==0.7.2
 - django-cors-headers
 - django-filter==2.4
