@@ -1,4 +1,4 @@
-![Workflow stat](https://github.com/KunAgueroAgness/yamdb_final/actions/workflows/foodgram_workflows.yml/badge.svg)
+[![Foodgram workflow](https://github.com/KunAgueroAgness/foodgram-project-react/actions/workflows/foodgram_workflows.yml/badge.svg)](https://github.com/KunAgueroAgness/foodgram-project-react/actions/workflows/foodgram_workflows.yml)
 
 # Продуктовый помощник Foodgram
 
