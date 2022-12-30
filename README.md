@@ -1,4 +1,5 @@
 ![Workflow stat](https://github.com/KunAgueroAgness/yamdb_final/actions/workflows/foodgram_workflows.yml/badge.svg)
+
 # Продуктовый помощник Foodgram
 
 ***Foodgram*** - это сайт рецептов. Продуктовый помощник, позволяющий просматривать и создавать рецепты, добавлять их в
